@@ -8,6 +8,13 @@ require 'colorize'
   "I cannot say right now"
 ]
 @new_answers = @default_answers.clone
+@colors = [
+  :cyan,
+  :red,
+  :magenta,
+  :blue,
+  :green,
+]
 
 
   
@@ -33,7 +40,7 @@ require 'colorize'
   
   def answers
     youranswer = @answers.flatten.sample
-    puts "🎱>" + youranswer
+    puts "🎱>" + youranswer.colorize(@colors.sample)
   end
 
   def eight_ball
