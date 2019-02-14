@@ -1,0 +1,1 @@
+puts "Hello I am the Magic Eight Ball"
