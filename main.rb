@@ -38,12 +38,14 @@ require 'colorize'
   end
 
   def reset_answers
-    @new_answers = @default_answers
+    @new_answers = @default_answers.clone
     puts "Answers reset"
     sleep 1
   end
   
   def answers
+    puts "Calculating...."
+    sleep 2
     youranswer = @answers.flatten.sample
     puts "🎱>" + youranswer.colorize(@colors.sample)
   end
