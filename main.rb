@@ -26,14 +26,19 @@ require 'colorize'
   def add_answers
     
     puts "What answer do you want to add?"
-      @new_answers << gets.strip
+      input = gets.strip
+      if @new_answers.include?(input)
+        puts "invalid entry"
+      else
+      @new_answers << input
       puts "Your answer has been added"
       sleep 1
       eight_ball
+      end
   end
 
   def reset_answers
-    @new_answers = []
+    @new_answers = @default_answers
     puts "Answers reset"
     sleep 1
   end
