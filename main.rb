@@ -4,7 +4,13 @@ require 'colorize'
 
 ## THIS IS MY GAME!!!!
 
-@default_answers = [
+
+class Eight_ball
+
+  
+  def initialize
+    looping = true;
+    @default_answers = [
   "Yes",
   "No",
   "Maybe",
@@ -18,10 +24,6 @@ require 'colorize'
   :blue,
   :green,
 ]
-
-
-  
-  def initialize
     @answers = @default_answers
     eight_ball
   end
@@ -41,16 +43,18 @@ require 'colorize'
   end
 
   def reset_answers
-    @new_answers = @default_answers.clone
-    puts "Answers reset"
+    puts "Answers reset".colorize(@colors.sample)
     sleep 1
+    initialize
   end
   
   def answers
     puts "Calculating...."
-    sleep 2
+    sleep 1
     youranswer = @answers.flatten.sample
     puts "🎱>" + youranswer.colorize(@colors.sample)
+    sleep 1
+    eight_ball
   end
 
   def eight_ball
@@ -58,8 +62,8 @@ require 'colorize'
     print "Hello I am the".colorize(:cyan)
     print " Magic Eight Ball ".colorize(:red)
     print "(type".colorize(:cyan)
-    print " quit".colorize(:green)
-    puts " to exit)".colorize(:cyan)
+    print " 7".colorize(:green)
+    puts " for easter egg commands)".colorize(:cyan)
     puts "Ask me any Yes or No question and I will give you a delicious answer."
     print ""
     
@@ -76,12 +80,24 @@ require 'colorize'
       @new_answers.each_with_index do |answer, index|
         puts "#{index + 1}) #{answer}"
       end
+      sleep 1
+      eight_ball
+    when "7"
+      easter_eggs
     else
       @answers << @new_answers
       answers
     end
   end
 
-while true
-initialize
+  def easter_eggs
+    puts "Type add_answers to add"
+    puts "Type reset_answers to reset"
+    puts "Type print_answers for a list"
+    puts "Type quit to exit"
+    eight_ball
+  end
+
 end
+
+Eight_ball.new
